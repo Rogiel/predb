@@ -16,9 +16,6 @@
 * along with predb.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Require core library
-require_once '../PreDatabase_Library.php';
-
 /**
  * Adapter implementation for http://pre.scnsrc.net/
  * @author Rogiel

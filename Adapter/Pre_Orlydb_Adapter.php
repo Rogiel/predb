@@ -16,9 +16,6 @@
 * along with predb.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Require core library
-require_once '../PreDatabase_Library.php';
-
 /**
 * Adapter implementation for http://orlydb.com/
 * @author <a href="http://www.rogiel.com/">Rogiel</a>
