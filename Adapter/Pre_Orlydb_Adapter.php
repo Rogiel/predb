@@ -43,7 +43,7 @@ class Pre_Orlydb_Adapter implements Pre_Adapter {
 			$node = $xpath->query("/html/body/div/div[2]/div[" . $i . "]/span");
 			if ($node->length == 0)
 			break;
-			$pres[] = &$this->parseRelease($node);
+			$pres[] = $this->parseRelease($node);
 		}
 		return $pres;
 	}
