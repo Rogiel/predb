@@ -32,10 +32,8 @@
 namespace PreDB\Adapter;
 
 use PreDB\Release;
-
 use DOMDocument;
 use DOMXPath;
-
 use DateTime;
 use DateTimeZone;
 
@@ -48,13 +46,13 @@ use DateTimeZone;
  */
 class OrlyDB implements Adapter {
 
-	public function latest() {
-		$html = file_get_contents("http://orlydb.com/1");
+	public function latest($page = 1) {
+		$html = file_get_contents("http://orlydb.com/" . $page);
 		return $this->parseList($html);
 	}
 
-	public function search($release) {
-		$html = file_get_contents("http://orlydb.com/?q=" . urlencode($release));
+	public function search($release, $page = 1) {
+		$html = file_get_contents("http://orlydb.com/{$page}?q=" . urlencode($release));
 		return $this->parseList($html);
 	}
 

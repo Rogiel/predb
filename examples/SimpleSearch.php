@@ -37,6 +37,8 @@ use PreDB\PreDB;
 
 // This example does a simple search for an pre release
 $db = new PreDB();
-print_r($db->search("Microsoft Windows"));
+
+$result = $db->search("Microsoft Windows");
+var_dump($result);
 
 ?>

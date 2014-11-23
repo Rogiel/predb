@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2014, Rogiel Sulzbach <rogiel@rogiel.com>
  * All rights reserved.
@@ -28,12 +29,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 namespace PreDB\Adapter;
 
 /**
  * The pre adapter interface
- * 
+ *
  * @author <a href="http://www.rogiel.com/">Rogiel</a>
  * @since 1.0
  */
@@ -41,13 +41,18 @@ interface Adapter {
 
 	/**
 	 * Implements the underlying search method
-	 * 
-	 * @param string $release        	
+	 *
+	 * @param string $release     
+	 * @param int $page
+	 *        	the page to return   	
 	 */
-	function search($release);
+	function search($release, $page = 1);
 
 	/**
 	 * Implements the underlying latest method
+	 * 
+	 * @param int $page
+	 *        	the page to load
 	 */
-	function latest();
+	function latest($page = 1);
 }

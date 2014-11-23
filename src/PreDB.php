@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2014, Rogiel Sulzbach <rogiel@rogiel.com>
  * All rights reserved.
@@ -28,7 +29,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 namespace PreDB;
 
 use PreDB\Adapter\Adapter;
@@ -41,33 +41,35 @@ class PreDB {
 	 * @var Adapter
 	 */
 	private $adapter;
-	
+
 	/**
 	 * Creates a new instance
 	 *
 	 * @param Adapter $adapter
 	 *        	the adapter to use. If none is provided an default is used.
 	 */
-	public function __construct($adapter = null) {
+	public function __construct(Adapter $adapter = null) {
 		if ($adapter == null) {
 			$adapter = new \PreDB\Adapter\OrlyDB();
 		}
 		$this->adapter = $adapter;
 	}
-	
+
 	/**
 	 * Searches the pre database for certain releases
 	 *
-	 * @param
-	 *        	string, SearchHelper $query the query
+	 * @param string|SearchHelper $query
+	 *        	the query
+	 * @param int $page
+	 *        	the page to return
 	 */
-	public function search($query) {
+	public function search($query, $page = 1) {
 		if ($query instanceof SearchHelper) {
 			$query = $query->getSearchQuery();
 		}
-		return $this->adapter->search($query);
+		return $this->adapter->search($query, $page);
 	}
-	
+
 	/**
 	 * Searches the pre database for an certain release
 	 *
@@ -79,11 +81,14 @@ class PreDB {
 		$releases = $this->adapter->search($release);
 		return predb_find_suitable_release($release, $releases);
 	}
-	
+
 	/**
 	 * Retrieve the latest pre entries from the database
+	 *
+	 * @param int $page
+	 *        	the page to load
 	 */
-	public function latest() {
-		return $this->adapter->latest();
+	public function latest($page = 1) {
+		return $this->adapter->latest($page);
 	}
 }
